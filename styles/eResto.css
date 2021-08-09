@@ -1,0 +1,904 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+/* http://meyerweb.com/eric/tools/css/reset/ *********************************************************************
+   v2.0 | 20110126
+   License: none (public domain)
+*****************************************************************************************************************/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  min-height: 100vh;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/******************************************************************************************************************/
+/*                                                   General settings                                             */
+/******************************************************************************************************************/
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  --color1: rgba(138, 6, 12, 1);
+  background-color: lightgrey;
+}
+
+main {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: var(--color1);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  position: absolute;
+  color: #000;
+  bottom: 0px;
+  width: calc(100% - 10px);
+  text-shadow: 1px 1px 2px #000;
+  font-size: 2rem;
+  margin: 1.25rem 0rem;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 2rem !important;
+}
+
+h3 {
+  padding: 0.75rem 0;
+  text-align: center;
+  margin: 5vh;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color1);
+  border-bottom: solid 2px var(--color1);
+}
+
+h4 {
+  margin: 2rem 0 2rem 2rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+h4.comment {
+  text-align: center;
+}
+
+p {
+  margin: 1.5rem 5vw !important;
+  text-align: justify;
+}
+
+p.comment {
+  margin: 0 !important;
+}
+
+strong {
+  font-weight: bold;
+  color: var(--color1);
+}
+
+/* p > a[href^=http]:hover:after {
+    content: '';
+    padding-left: 20px;
+    background-image: url(../images/lien_externe.gif);
+    background-position: center right;
+    background-repeat: no-repeat;
+} */
+
+/******************************************************************************************************************/
+/*                                                   Menu                                                         */
+/******************************************************************************************************************/
+
+header {
+  background-color: rgba(138, 6, 12, 0.9) !important;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  text-align: center;
+  color: white;
+  max-width: 100%;
+}
+
+.menu {
+  width: inherit;
+  height: 40px;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span:before,
+.nav-toggle-label span:after {
+  display: block;
+  background: white;
+  height: 2px;
+  width: 1.33rem;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span:before,
+.nav-toggle-label span:after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span:before {
+  top: 8px;
+}
+
+.nav-toggle-label span:after {
+  bottom: 8px;
+}
+
+nav {
+  background-color: rgba(138, 6, 12, 0.9) !important;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  width: 100%;
+  transform: scale(1, 0);
+  transition: transform 300ms ease-in-out;
+  transform-origin: top;
+}
+
+nav a,
+nav a:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25em;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  margin-left: 1.5rem;
+}
+
+nav li:last-of-type {
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 1000px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  .menu {
+    height: 40px;
+  }
+
+  header {
+    display: flex;
+  }
+
+  nav {
+    height: 100% !important;
+    all: unset;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    transition: none;
+    transform: scale(1, 1);
+    background: none;
+    top: initial;
+    left: initial;
+  }
+
+  nav ul {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  nav li {
+    margin: 0 3em;
+    margin-bottom: 0 !important;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: "";
+    display: block;
+    height: 2px;
+    background: black;
+    position: absolute;
+    top: -0.1em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+}
+
+/******************************************************************************************************************/
+/*                                                       Header                                                   */
+/******************************************************************************************************************/
+
+main > .welcome-background {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  top: 40px;
+  background: transparent url(../images/header.jpg);
+  background-origin: center;
+  background-size: cover;
+}
+
+main > .welcome-background:before {
+  content: "";
+  position: relative;
+  display: block;
+  width: 250px;
+  height: 50px;
+  background-image: url(../images/logo-eresto-u.png);
+  background-repeat: no-repeat;
+  background-size: 250px 50px;
+  position: absolute;
+  top: 35px;
+}
+main > .welcome-background:after {
+  position: relative;
+  display: block;
+  margin: 90px 0 0 0;
+  padding: 0;
+  font-size: 20px;
+  content: "Le resto-U 100% digital !";
+  font-style: italic;
+}
+
+main > .welcome-background img,
+main > .welcome-background > a {
+  position: absolute;
+}
+
+main > .welcome-background > a:nth-of-type(1) {
+  display: block;
+  right: 20px;
+  top: 130px;
+  width: 90px;
+  height: 90px;
+  background: transparent url("../images/logo-Crous-BFC.png") no-repeat;
+}
+main > .welcome-background > a:nth-of-type(2) {
+  display: block;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: 55px;
+  background: transparent url("../images/logo-UFC.png") no-repeat;
+}
+
+/******************************************************************************************************************/
+/*                                                 Page content                                                   */
+/******************************************************************************************************************/
+
+main {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+
+#background {
+  height: 434px;
+  background-image: url(../images/resto-u.jpg);
+  background-attachment: fixed;
+  background-size: 960px;
+  background-repeat: no-repeat;
+  background-position: center 60%;
+}
+
+main > * {
+  margin: 0;
+  background-color: white;
+}
+main > *:not(header) {
+  padding: 2rem 10vw;
+  margin-bottom: 0 !important;
+}
+
+ol {
+  list-style-type: decimal;
+  padding: 1vh 5vw;
+  text-align: justify;
+}
+
+ol > li {
+  padding: 1.5rem 0;
+}
+
+*:not(nav) > ul > li {
+  padding: 1rem 1rem;
+}
+
+*:not(nav) > ul {
+  list-style-type: "\1F44D";
+  padding: 1vh 5vw;
+}
+
+section > h3 {
+  padding-top: 35px;
+  margin-top: -5px;
+}
+
+section h4 + p {
+  padding: 0 10px;
+}
+
+abbr {
+  cursor: default;
+}
+
+/** Zone de description des différentes technologies **/
+
+.technos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 5vh;
+}
+
+.technos img {
+  margin: 2.5vh;
+}
+
+/** Zone contenant les 3 liens de navigation intra-page (carrés gris) **/
+
+.liens {
+  margin: 0;
+  padding: 5vh 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
+
+.liens a {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 250px;
+  height: 100px;
+  font-size: 1.25rem;
+  color: black;
+  text-align: center;
+  background: radial-gradient(white, lightgrey);
+  margin: 10px;
+  box-shadow: 2px 2px 2px grey;
+}
+
+.liens a:hover {
+  text-decoration: none;
+  background: radial-gradient(#ffaaaa, var(--color1));
+  color: white;
+  box-shadow: 2px 2px 2px dark#be0d16;
+}
+
+/******************************************************************************************************************/
+/*                                                       Footer                                                   */
+/******************************************************************************************************************/
+
+main > footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  padding: 0rem 3vw;
+  color: white;
+  background-color: var(--color1);
+}
+
+footer p {
+  margin: 1rem 5vw !important;
+}
+
+i.fa {
+  padding-left: 1rem;
+  color: lightgrey;
+}
+
+i.fa:hover {
+  color: white;
+}
+/******************************************************************************************************************/
+/*                                                       Components                                               */
+/******************************************************************************************************************/
+
+/** scrollbar **/
+
+body::-webkit-scrollbar {
+  width: 0.75rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: lightgrey;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-color: #be0d16;
+  border: solid 3.5px lightgrey;
+}
+
+/** Boutons **/
+
+a.bouton {
+  border: solid #be0d16;
+  color: white;
+  background-color: #be0d16;
+  border-radius: 10px;
+  margin: 0 5vw;
+  text-decoration: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+a.bouton:hover {
+  background-color: lightgrey;
+  color: #000;
+}
+
+/** Tableaux **/
+
+table {
+  margin: 0 auto;
+}
+
+table td {
+  padding-right: 1rem;
+}
+
+/** Formulaire **/
+form {
+  margin: 20px 0;
+}
+
+form table {
+  margin: 10px auto;
+}
+
+form table td {
+  padding: 2px 4px;
+  width: auto;
+}
+
+form table td:first-child:not(:only-child) {
+  text-align: right;
+}
+
+form :invalid {
+  color: #be0d16;
+  border: solid 1px #ff7777;
+  box-shadow: 2px 2px 2px #ff7777, 2px -2px 2px #ff7777, -2px 2px 2px #ff7777,
+    -2px -2px 2px #ff7777;
+}
+
+form label {
+  display: block;
+}
+
+form table tr:last-of-type > td {
+  padding-top: 20px;
+}
+
+form input[type="submit"],
+form input[type="reset"] {
+  color: black;
+  background-color: lightgrey;
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 0.25rem !important;
+  margin: 0 10px;
+  width: 120px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
+  color: white;
+  background-color: #be0d16;
+  border: solid 2px transparent;
+}
+
+form input[type="number"] {
+  margin: 5px auto;
+  display: block;
+  width: 40px;
+}
+
+form select {
+  font-size: 16px;
+}
+
+form textarea {
+  vertical-align: top;
+  width: 400px;
+  height: 100px;
+}
+
+form input[type="file"] {
+  width: 300px;
+}
+
+/** Choix du menu **/
+
+.flexdiv {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: scroll;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flexdiv input[type="radio"],
+.flexdiv input[type="checkbox"] {
+  display: none;
+}
+
+.flexdiv > label {
+  display: inline-block;
+  width: 160px;
+  margin: 10px 20px;
+  position: relative;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.flexdiv input:checked + .plat {
+  border: solid 2px darkgreen;
+}
+
+.flexdiv .plat {
+  border: solid 2px transparent;
+  display: inline-block;
+  width: 160px;
+  padding: 5px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.flexdiv .plat img {
+  width: 150px;
+  display: block;
+  margin: 5px auto;
+  border-radius: 10px;
+}
+
+.flexdiv .plat {
+  text-align: center;
+}
+
+/** Blocs attention et notice **/
+
+.attention {
+  /* border: solid 2px var(--color1); */
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.attention:before {
+  position: absolute;
+  bottom: 1px;
+  left: -50px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  content: url(../images/attention.png);
+}
+
+.notice {
+  border: solid 2px rgb(0, 0, 143);
+  background-color: rgb(0, 0, 143);
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20px auto;
+  text-align: center;
+  font-weight: 500;
+}
+.notice:before {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  padding: 2px;
+  height: 48px;
+  width: 50px;
+  background-color: white;
+  content: url(../images/notice.png);
+  border-radius: 50%;
+}
+
+/** entetes et titres du formulaire **/
+
+form header,
+form footer {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: center;
+}
+form header input[type],
+form footer input[type] {
+  width: 140px;
+  margin: 0 10px;
+}
+
+/** video **/
+video {
+  display: block;
+  margin: 10px auto;
+  width: 60%;
+  height: auto;
+}
+
+#pi + span {
+  display: none;
+}
+#pi:hover + span {
+  padding-left: 5px;
+  display: inline;
+  font-size: 100%;
+}
+
+/** Commentaires **/
+
+article {
+  position: relative;
+  background-color: #eee;
+  border-radius: 10px;
+  margin: 10px;
+  min-height: 90px;
+}
+
+article form {
+  display: none;
+  position: absolute;
+  margin: 5px;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+article:hover form {
+  display: block;
+}
+
+article h5 {
+  font-weight: bold;
+}
+
+article p {
+  font-style: italic;
+  padding: 0 20px;
+}
+
+article footer {
+  margin: 10px 0 0 0;
+}
+
+article a {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+article img {
+  border: solid 1px #000;
+  height: 90px;
+  width: auto;
+}
+
+/** Messages d'erreur ou de succès **/
+
+.erreur,
+.succes {
+  color: #be0d16;
+  font-size: 14px;
+  font-weight: bold;
+  width: 80%;
+  margin: 10px auto;
+  border: solid 2px #be0d16;
+  padding: 5px;
+  line-height: 1.5;
+}
+.succes {
+  color: darkgreen;
+  border-color: darkgreen;
+  text-align: center;
+}
+
+.erreur ul {
+  list-style-type: "\1F61E" !important;
+}
