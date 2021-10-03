@@ -8,4 +8,4 @@ This is a localhost version. You should have php installed, a web server and a m
 
 `eRestoU_bd` database contains 5 tables, and allows the restaurant to save students infos, record what meals they took and/or comment, and the different menus with the dishes that compose them.
 
-![eresto_u database schema](/eresto-u/images/eRestoU_bdd.png)
+![eresto_u database schema](/images/eRestoU_bdd.png)
